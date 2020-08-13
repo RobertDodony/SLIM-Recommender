@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+<title>Book list</title>
+</head>
+
+<body>
+	<div class="container">
+		<h3>Book list</h3>
+		<hr>
+
+		<!-- Add a button -->
+		<a th:href="@{/books/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3">
+			Add Book
+		</a>
+		
+		<a th:href="index"
+			class="btn btn-primary btn-sm mb-3">
+			Back to homepage
+		</a>
+
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Year</th>
+					<th>Page number</th>
+					<th>Price1</th>
+					<th>Price2</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="tempBook : ${books}">
+
+					<td th:text="${tempBook.title}" />
+					<td th:text="${tempBook.author}" />
+					<td th:text="${tempBook.year}" />
+					<td th:text="${tempBook.pageNumber}" />
+					<td th:text="${tempBook.price1}" />
+					<td th:text="${tempBook.price2}" />
+					
+					<td>
+						<a th:href="@{/books/showFormForUpdate(bookId=${tempBook.id})}"
+							class="btn btn-info btn-sm">
+							Buy
+						</a>
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
+
+
+
